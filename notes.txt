@@ -1,0 +1,67 @@
+# GraphQL Notes (Codebridge Event)
+
+GraphQL for Front End Devs
+
+DSL - Language expresses specific and predifined type of digital info (domain specific Language)
+Express info in various ways
+
+Open Bylaws
+
+xkcd
+
+functions (JSON like schema)
+
+Fields - object like structure
+Arguments - optional info for a field
+Aliases - nameing results, useful when same field
+Fragments - abstracting parts of a query
+Variables - pass data through Variables into query
+Directives - add conditional logic to query
+
+Mutations - allow you to modify data in db
+Subscriptions - listen for changes on server (experimental)
+
+GraphQL for Backend Devs
+
+            data
+              |
+query > data-access layer > output
+
+GraphQL is a spec for how a GraphQL server is supposed to behave
+
+JS is just an implemetation of Ecma script
+
+Trying to solve:
+1. over/under fetching data
+# reduce data costs
+
+2. Unify 3rd party APIs
+
+3. Unify FE & BE Devs
+
+query local storage using GraphQL - Not contained to a server
+
+consists of:
+
+- type systems
+- resolvers
+- query lang
+
+
+# Type systems
+
+Define your data
+> Object Definition
+> Schema Dein lang (DSL)
+
+# Resolvers
+
+Define how to get your data
+
+# Query Language
+
+Define what data you want to get
+
+
+returns null - it still resolves (runs)
+
