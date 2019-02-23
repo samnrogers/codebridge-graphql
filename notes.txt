@@ -52,7 +52,7 @@ consists of:
 
 Define your data
 > Object Definition
-> Schema Dein lang (DSL)
+> Schema Design lang (DSL)
 
 # Resolvers
 
