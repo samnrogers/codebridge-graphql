@@ -26,8 +26,16 @@ const Schema = new GraphQLSchema({
 const Resolvers = {
     user() {
         return {
-            name: "John",
-            surname: "Doe"
+            name() {
+                return new Promise(resolve => {
+                    setTimeout(() => resolve("John"), 2000)
+                })
+            },
+            surname() {
+                return new Promise(resolve => {
+                    setTimeout(() => resolve("Doe"), 3000)
+                })
+            }
         }
     }
 }
