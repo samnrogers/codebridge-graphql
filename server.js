@@ -15,7 +15,11 @@ const User = new GraphQLObjectType({
 const Schema = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: "QueryType",
-        fields: { type: User }
+        fields: {
+            user: {
+                type: User
+            }
+        }
     })
 })
 
@@ -32,6 +36,7 @@ const Query = `
     query {
         user {
             name
+            surname
         }
     }
 `
