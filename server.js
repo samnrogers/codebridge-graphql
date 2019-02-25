@@ -1,15 +1,24 @@
-const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLBoolean } = require('graphql')
+const express = require('express')
+const app = express()
+const graphQLHTTP = require('express-graphql')
+const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLBoolean, GraphQLInt } = require('graphql')
 
 const User = new GraphQLObjectType({
     name: "UserType",
     fields: {
-        name: {
-            type: GraphQLNonNull(GraphQLString)
-        },
-        surname: {
-            type: GraphQLNonNull(GraphQLString)
-        },
+        name: { type: GraphQLNonNull(GraphQLString) },
+        surname: { type: GraphQLNonNull(GraphQLString) },
         isFacebookWatchingYou: { type: GraphQLBoolean }
+    }
+})
+
+const Book = new GraphQLObjectType({
+    name: "BookType",
+    fields: {
+        title: { type: GraphQLNonNull(GraphQLString) },
+        author: { type: GraphQLNonNull(GraphQLString) },
+        genre: { type: GraphQLNonNull(GraphQLString) },
+        available: { type: GraphQLNonNull(GraphQLInt) }
     }
 })
 
@@ -19,6 +28,9 @@ const Schema = new GraphQLSchema({
         fields: {
             user: {
                 type: User
+            },
+            book: {
+                type: Book
             }
         }
     })
@@ -28,20 +40,19 @@ const Schema = new GraphQLSchema({
 const Resolvers = {
     user() {
         return {
-            name() {
-                // return new Promise(resolve => {
-                //     setTimeout(() => resolve("John"), 2000)
-                // })
-                return "Joe"
-            },
-            surname() {
-                // return new Promise(resolve => {
-                //     setTimeout(() => resolve("Doe"), 3000)
-                // })
-                return "Doe"
-            },
+            name() { return "Joe" },
+            surname() { return "Doe" },
             isFacebookWatchingYou: true
         }
+    },
+    book() {
+        return {
+            title() { return "East of Eden" },
+            author() { return "John Steinbeck" },
+            genre() { return "Literary Fiction" },
+            available() { return 3 }
+        }
+        
     }
 }
 
@@ -51,6 +62,12 @@ const Query = `
             name
             surname
             isFacebookWatchingYou
+        },
+        book {
+            title
+            author
+            genre
+            available
         }
     }
 `
